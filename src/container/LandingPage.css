@@ -1,0 +1,9 @@
+.listItem{
+    display: inline-block;
+    margin: 10px;
+}
+
+
+.listContainer ul{
+    display: absolute;
+}

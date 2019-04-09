@@ -1,0 +1,34 @@
+.recomList-row{
+    display: inline-block; 
+    margin: 5px;
+    /* justify-content: center; */
+    position: relative;
+}
+
+.recomList-row:hover img{
+    opacity: 0.3;
+}
+
+.recomList-row:hover .button-container {
+    opacity: 1;
+}
+
+.recomList-row img {
+    width: 200px;
+    height: 250px;
+    /* z-index: 1; */
+    display: block;
+    backface-visibility: hidden;
+    opacity: 1;
+}
+
+.button-container {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+  }
+
