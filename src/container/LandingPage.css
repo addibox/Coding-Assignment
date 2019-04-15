@@ -7,3 +7,24 @@
 .listContainer ul{
     display: absolute;
 }
+
+.row-container{
+    position: relative;
+    display: block;
+    justify-content: flex-start;
+    margin: 30px;
+    color: white;
+    font-size: 1.3em;
+}
+
+.row-title {
+    justify-content: flex-start;
+}
+
+.title-list p,
+.title-list h5{
+    color: white;
+    display: inline-block;
+    margin: 20px;
+}
+

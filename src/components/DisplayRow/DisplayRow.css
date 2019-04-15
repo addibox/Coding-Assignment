@@ -1,25 +1,25 @@
 .basicRow {
-    background-color: beige;
-    margin: 10px;
-    border: 1px solid blanchedalmond;
+    position: relative;
 }
 
-.mylist-row{
+.item-row{
     display: inline-block; 
     margin: 5px;
     /* justify-content: center; */
     position: relative;
 }
 
-.mylist-row:hover img{
+
+
+.item-row:hover img{
     opacity: 0.3;
 }
 
-.mylist-row:hover .button-container {
+.item-row:hover .button-container {
     opacity: 1;
 }
 
-.mylist-row img {
+.item-row img {
     width: 200px;
     height: 250px;
     /* z-index: 1; */
@@ -37,3 +37,10 @@
     transform: translate(-50%,-50%);
     text-align: center;
   }
+
+.recomList-row{
+    display: inline-block; 
+    margin: 5px;
+    /* justify-content: center; */
+    position: relative;
+}

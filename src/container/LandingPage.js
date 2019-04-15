@@ -1,28 +1,65 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Navbar, Nav, ListGroup } from 'react-bootstrap';
 
+import DisplayRow from '../components/DisplayRow/DisplayRow';
+import './LandingPage.css';
+import * as actionCreators from '../store/actions/actions';
 
-import MyList from '../components/MyList/MyList';
-import Recommendations from '../components/Recommendations/Recommendations';
-import './LandingPage.css'
 
 class LandingPage extends Component{
+    componentDidMount(){
+        this.props.dispatch(actionCreators.fetchData()); 
+    };
+    componentDidUpdate(){
+        // console.log(Object.keys(this.props.data)[0]);
+    }
     
     render(){
+        let myListTitle;
+        if(this.props.myList){
+            myListTitle = this.props.myList.map( ele => {
+                return (
+                    <p>{ele.title}</p>
+                )
+            });
+        };
         return(
+            
             <div>
-                <MyList />
-                <Recommendations />
-                <div className="listContainer">
-                    <div className="listTitle">
-                        <p>My list:</p>
+                {/* Navigation bar*/}
+                <Navbar bg="dark">
+                    <Navbar.Brand href="#home">
+                        <img src="/Netflix_logo.png"
+                        width="85" height="60"
+                        className="d-inline-block align-top"
+                        alt="Netflix logo"/>
+                    </Navbar.Brand>
+                    <Nav className="mr-auto">
+                    <Nav.Link href="/" style={{color: 'white'}}>My List</Nav.Link>
+                    <Nav.Link href="/" style={{color: 'white'}}>Recommendations</Nav.Link>
+                    </Nav>
+                </Navbar>
+
+                {/* Display items*/}
+                <div className="row-container">
+                    <div className="row-title">
+                        <p>Your List</p>
                     </div>
-                    <ul>
-                        {this.props.myList.map( ele => 
-                            <li key={ele.id} className="listItem" variant="info">{ele.title}</li>
-                        )}
-                    </ul>  
+                    <DisplayRow type="myList"/>
                 </div>
+                <div className="row-container">
+                    <div className="row-title">
+                        <p>Recommendations</p>
+                    </div>
+                    <DisplayRow type="recommendations" /> 
+                </div>
+
+                <div className="title-list" >
+                    <h5>Your List:</h5>
+                    {myListTitle}
+                </div>
+
             </div>
         );
     }
@@ -30,10 +67,11 @@ class LandingPage extends Component{
 
 const mapStateToProps = state => {
     return {
-        myList: state.mylist
+        data: state.data,
+        myList: state.myList,
+        recommendations: state.recommendations
     }
 }
-
 
 
 export default connect(mapStateToProps)(LandingPage);
